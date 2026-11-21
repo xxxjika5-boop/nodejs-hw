@@ -1,4 +1,5 @@
 import dns from 'node:dns';
+import { errors } from 'celebrate';
 
 dns.setServers(['8.8.8.8', '8.8.4.4']);
 
@@ -26,7 +27,7 @@ app.use(express.json());
 app.use(notesRouter);
 
 app.use(notFoundHandler);
-
+app.use(errors());
 app.use(errorHandler);
 
 const bootstrap = async () => {
